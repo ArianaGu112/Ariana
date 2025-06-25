@@ -7,9 +7,9 @@ option = st.selectbox("Translate to:", ["chinese", "english"])
 
 if st.button("Translate"):
   if option=="chinese":
-    translator = Translator(to_lang="zh")
-  elif option=="english":
     translator = Translator(to_lang="en")
+  elif option=="english":
+    translator = Translator(to_lang="zh")
   try:
     result = translator.translate(text)
     st.write("Translation:", result)
