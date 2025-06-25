@@ -1,3 +1,5 @@
+pip install translate
+pip install streamlit
 from translate import Translator
 import streamlit as st
 
