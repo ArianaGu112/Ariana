@@ -1,16 +1,24 @@
 from deep_translator import GoogleTranslator
 import streamlit as st
 
-st.title("Chinese ↔ English Translator")
+st.title("Translator")
 text = st.text_area("Enter text:")
-option = st.selectbox("Translate to:", ["Chinese", "English"])
+option = st.selectbox("Translate to:", ["Chinese","Traditional Chinese", "English","Japanese","Korean"])
 
 if st.button("Translate"):
     if not text.strip():
         st.warning("Please enter text to translate.")
     else:
-        # 用大写的区域代码 'zh-CN' 或 'en'
-        target = 'zh-CN' if option == "Chinese" else 'en'
+        if option == "Chinese":
+            target = 'zh-CN'
+        elif option == "Traditional Chinese":
+            target = 'zh-TW'
+        elif option == "Japanese":
+            target = 'ja'
+        elif option == "Korean":
+            target = 'ko'
+        else:  # English
+            target = 'en'
         try:
             result = GoogleTranslator(source='auto', target=target).translate(text)
             st.write("Translation:", result)
